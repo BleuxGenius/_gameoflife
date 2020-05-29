@@ -29,7 +29,7 @@ class Game extends React.Component {
     constructor() {
         super();
         this.rows = height / cell_size;
-        this.columns = width / cell_size;
+        this.cols = width / cell_size;
 
         this.board = this.makeEmptyBoard();
     }
@@ -50,7 +50,7 @@ class Game extends React.Component {
         let board = [];
         for (let y = 0; y < this.rows; y++) {
             board[y] = [];
-            for (let x = 0; x < this.columns; x++) {
+            for (let x = 0; x < this.cols; x++) {
                 board[y][x] = false;
             }
         }
@@ -70,7 +70,7 @@ class Game extends React.Component {
     makeCells() {
         let cells = [];
         for (let y = 0; y < this.rows; y++) {
-            for (let x = 0; x < this.columns; x++) {
+            for (let x = 0; x < this.cols; x++) {
                 if (this.board[y][x]) {
                     cells.push({ x, y });
                 }
@@ -89,7 +89,7 @@ class Game extends React.Component {
         const x = Math.floor(offsetX / cell_size);
         const y = Math.floor(offsetY / cell_size);
 
-        if (x >= 0 && x <= this.columns && y >= 0 && y <= this.rows) {
+        if (x >= 0 && x <= this.cols && y >= 0 && y <= this.rows) {
             this.board[y][x] = !this.board[y][x];
         }
 
@@ -113,7 +113,7 @@ class Game extends React.Component {
         let newBoard = this.makeEmptyBoard();
 
         for (let y = 0; y < this.rows; y++) {
-            for (let x = 0; x < this.columns; x++) {
+            for (let x = 0; x < this.cols; x++) {
                 let neighbors = this.calculateNeighbors(this.board, x, y);
                 if (this.board[y][x]) {
                     if (neighbors === 2 || neighbors === 3) {
@@ -164,7 +164,7 @@ class Game extends React.Component {
 
     handleRandom = () => {
         for (let y = 0; y < this.rows; y++) {
-            for (let x = 0; x < this.columns; x++) {
+            for (let x = 0; x < this.cols; x++) {
                 this.board[y][x] = (Math.random() >= 0.5);
             }
         }
@@ -180,7 +180,7 @@ class Game extends React.Component {
             <div>
    
                 <div className="Board"
-                    style={{ width: width, height: height, backgroundSize: `${cell_size}px ${cell_size}px` }}
+                    style={{ width: width, height: height, backgroundSize: `${cell_size}px ${cell_size}px`}}
                     onClick={this.handleClick}
                     ref={(n) => { this.boardRef = n; }}>
 

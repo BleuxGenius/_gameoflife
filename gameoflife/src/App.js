@@ -7,10 +7,10 @@ class App extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = { showPopup: true};
+    this.state = { showPopup: false};
   }
 state ={
-  seen: false
+  seen: true
 };
 togglePop = () => {
 this.setState({
@@ -34,7 +34,6 @@ this.setState({
     </div>
     {this.state.seen ? <InstructionPopup toggle={this.togglePop} /> : null}
      <Game />
-
     </div>
   
   );
