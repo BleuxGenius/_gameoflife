@@ -4,11 +4,12 @@ import Game from './Game.js'
 import InstructionPopup from './InstructionPopup.js'
 
 class App extends React.Component {
-  
+  // creates pop up screen
   constructor(props) {
     super(props);
     this.state = { showPopup: false};
   }
+
 state ={
   seen: true
 };
