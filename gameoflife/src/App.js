@@ -1,14 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Gameboard from './Gameboard.js'
+import Game from './Game.js'
+import InstructionPopup from './InstructionPopup.js'
 
-function App() {
+class App extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = { showPopup: true};
+  }
+state ={
+  seen: false
+};
+togglePop = () => {
+this.setState({
+ seen: !this.state.seen
+});
+}
+
+
+  popupToggle(){
+    this.setState({
+      seen: !this.state.seen
+    });
+  }
+  render() {
   return (
+   
     <div className="App">
-     <Gameboard />
+      <div><h1>Conway's Game of Life</h1></div>
+      <div className="btn" onClick={this.togglePop}>
+      <button>Instructions</button>
     </div>
+    {this.state.seen ? <InstructionPopup toggle={this.togglePop} /> : null}
+     <Game />
+
+    </div>
+  
   );
+  }
 }
 
 export default App;
